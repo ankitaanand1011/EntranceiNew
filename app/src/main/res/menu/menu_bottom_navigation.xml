@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/nav_item_home"
+        android:title="Home"
+        android:icon="@mipmap/school_syllabus"
+        app:showAsAction="ifRoom" />
+    <!-- android:icon="@mipmap/house"-->
+
+
+    <item
+        android:id="@+id/nav_item_notes"
+        android:title="Notes"
+        android:icon="@mipmap/concepts"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/nav_item_test"
+        android:icon="@mipmap/online_test"
+        android:title="Online Test"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/nav_item_book"
+        android:icon="@mipmap/online_test"
+        android:title="Reference Book"
+        app:showAsAction="ifRoom" />
+</menu>

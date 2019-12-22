@@ -1,0 +1,650 @@
+package com.shuttle.dailyshuttlenew.activity;
+
+import android.Manifest;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentSender;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.net.Uri;
+import android.os.Build;
+import android.os.Bundle;
+
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.Toast;
+
+import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.android.gms.location.LocationSettingsResult;
+import com.google.android.gms.location.LocationSettingsStatusCodes;
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.shuttle.dailyshuttlenew.Constants.ApplicationConstants;
+import com.shuttle.dailyshuttlenew.Parser;
+import com.shuttle.dailyshuttlenew.R;
+import com.shuttle.dailyshuttlenew.VolleyMethods;
+import com.shuttle.dailyshuttlenew.VolleyRequest;
+import com.shuttle.dailyshuttlenew.WebResponseListner;
+import com.shuttle.dailyshuttlenew.adapter.StoppageListAdapter;
+import com.shuttle.dailyshuttlenew.common.Utility;
+import com.shuttle.dailyshuttlenew.model.StopageModel;
+
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
+
+public class TrackingActivity extends AppCompatActivity implements OnMapReadyCallback, WebResponseListner, LocationListener {
+private static final String TAG="track";
+
+    private static final int REQUEST_LOCATION = 111;
+    private GoogleMap mGoogleMap;
+    private String bus_id;
+    private String gps_device_id;
+    private String Bus_number;
+    private String bus_shedule_id;
+    private String route_id;
+    private GoogleApiClient googleApiClient;
+    private Marker userMarker;
+    private Marker busMarker;
+    private Timer timerGetLocation;
+    private boolean isFirstTime = false;
+    private long LOC_REQUEST_TIME = 30 * 1000;
+    private VolleyMethods volleyMethods = null;
+    private VolleyRequest volleyRequest = null;
+    BitmapDescriptor bmp = null;
+    private ImageView imgVwCodeLare = null;
+    private ArrayList<Marker> markers= null;
+    private static RequestQueue mRequestQueue;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        //AppLog.enter(TAG,AppLog.getMethodName());
+        setContentView(R.layout.activity_tracking);
+        bus_id = getIntent().getStringExtra("bus_id");
+        gps_device_id = getIntent().getStringExtra("gps_device_id");
+        Bus_number = getIntent().getStringExtra("Bus_number");
+        route_id = getIntent().getStringExtra("route_id");
+        bus_shedule_id = getIntent().getStringExtra("bus_shedule_id");
+        imgVwCodeLare = findViewById(R.id.iv_codelare);
+        volleyMethods = new VolleyMethods();
+        volleyRequest = VolleyRequest.getvolleyRequest();
+        SupportMapFragment supportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mGoogleMap);
+        supportMapFragment.getMapAsync(this);
+
+        checkLocPermission();
+        bmp = bitmapDescriptorFromVector(this, R.drawable.ic_bus);
+        imgVwCodeLare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.codelare.com/"));
+                startActivity(browserIntent);
+
+            }
+        });
+
+
+
+
+        volleyMethods.getBusStop(this, ApplicationConstants.WEB_ACTION_GET_BUS_STOP, route_id, bus_id, bus_shedule_id, volleyRequest, this);
+
+     //   AppLog.exit(TAG,AppLog.getMethodName());
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //AppLog.enter(TAG,AppLog.getMethodName());
+        if (gps_device_id != null && !gps_device_id.isEmpty()) {
+            timerGetLocation = new Timer();
+
+            timerGetLocation.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    getDriverLocation();
+                }
+            }, 0, LOC_REQUEST_TIME);
+        } else {
+            Utility.getInstatnce().showAlertDialog(this, "This bus does not have GPS", getString(R.string.type_error_warning));
+        }
+      //  AppLog.exit(TAG,AppLog.getMethodName());
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (timerGetLocation != null)
+            try {
+                timerGetLocation.cancel();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+    }
+
+    private void checkLocPermission() {
+        if (Build.VERSION.SDK_INT >= 23) {
+            if (ContextCompat.checkSelfPermission(this,
+                    Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                        101);
+            } else {
+                requestAutoMaticLoc();
+            }
+
+        } else {
+            requestAutoMaticLoc();
+        }
+    }
+
+    private void getDriverLocation() {
+//        showProgressDialog();
+        volleyMethods.getBusGPSLocation(this, ApplicationConstants.WEB_ACTION_GET_BUS_GPS, volleyRequest, this);
+
+    }
+
+//    public void showProgressDialog() {
+//
+//        progressDialog = new ProgressDialog(this);
+//        progressDialog.setCancelable(false);
+//        progressDialog.setMessage("Loading. Please wait...");
+//        progressDialog.show();
+//    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mGoogleMap = googleMap;
+        mGoogleMap.animateCamera(CameraUpdateFactory.zoomTo(15.0f));
+        mGoogleMap.getUiSettings().setMyLocationButtonEnabled(true);
+        mGoogleMap.getUiSettings().setZoomControlsEnabled(true);
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        } else {
+            mGoogleMap.setMyLocationEnabled(true);
+
+        }
+    }
+
+    private void drawMarkerOnMap(LatLng point) {
+        Log.d("Point", point.toString());
+
+        MarkerOptions markerOptions = new MarkerOptions();
+
+        markerOptions.position(point);
+
+        mGoogleMap.addMarker(markerOptions);
+    }
+
+
+    private void requestAutoMaticLoc() {
+        final LocationManager manager = (LocationManager) this.getSystemService(LOCATION_SERVICE);
+
+        if (manager != null) {
+            if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+                enableLoc();
+                fetchLoc();
+            } else {
+                fetchLoc();
+            }
+        }
+    }
+
+    private void fetchLoc() {
+        if (Build.VERSION.SDK_INT <= 23 || ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            LocationManager mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
+            if (mLocationManager != null) {
+                mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0f, this);
+                mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0f, this);
+            }
+            FusedLocationProviderClient mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+            mFusedLocationClient.getLastLocation()
+                    .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                        @Override
+                        public void onSuccess(Location location) {
+                            if (location != null) {
+                                onLocationChanged(location);
+                            }
+                        }
+                    });
+            if (googleApiClient == null) {
+                googleApiClient = new GoogleApiClient.Builder(this)
+                        .addApi(LocationServices.API)
+                        .addConnectionCallbacks(new GoogleApiClient.ConnectionCallbacks() {
+                            @Override
+                            public void onConnected(Bundle bundle) {
+
+                            }
+
+                            @Override
+                            public void onConnectionSuspended(int i) {
+                                googleApiClient.connect();
+                            }
+                        })
+                        .addOnConnectionFailedListener(new GoogleApiClient.OnConnectionFailedListener() {
+                            @Override
+                            public void onConnectionFailed(ConnectionResult connectionResult) {
+                                Log.d("Location error", "Location error " + connectionResult.getErrorCode());
+                            }
+                        }).build();
+                googleApiClient.connect();
+            }
+            if (googleApiClient != null && googleApiClient.isConnected()) {
+                Location location = LocationServices.FusedLocationApi.getLastLocation(googleApiClient);
+                onLocationChanged(location);
+            }
+        }
+    }
+
+    private void enableLoc() {
+        if (googleApiClient == null) {
+            googleApiClient = new GoogleApiClient.Builder(this)
+                    .addApi(LocationServices.API)
+                    .addConnectionCallbacks(new GoogleApiClient.ConnectionCallbacks() {
+                        @Override
+                        public void onConnected(Bundle bundle) {
+
+                        }
+
+                        @Override
+                        public void onConnectionSuspended(int i) {
+                            googleApiClient.connect();
+                        }
+                    })
+                    .addOnConnectionFailedListener(new GoogleApiClient.OnConnectionFailedListener() {
+                        @Override
+                        public void onConnectionFailed(ConnectionResult connectionResult) {
+                            Log.d("Location error", "Location error " + connectionResult.getErrorCode());
+                        }
+                    }).build();
+            googleApiClient.connect();
+
+            LocationRequest locationRequest = LocationRequest.create();
+            locationRequest.setPriority(LocationRequest.PRIORITY_LOW_POWER);
+            locationRequest.setInterval(1);
+            locationRequest.setFastestInterval(0);
+            LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder()
+                    .addLocationRequest(locationRequest);
+
+            builder.setAlwaysShow(true);
+
+            PendingResult<LocationSettingsResult> result =
+                    LocationServices.SettingsApi.checkLocationSettings(googleApiClient, builder.build());
+            result.setResultCallback(new ResultCallback<LocationSettingsResult>() {
+
+
+                @Override
+                public void onResult(LocationSettingsResult result) {
+                    final Status status = result.getStatus();
+                    switch (status.getStatusCode()) {
+                        case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:
+                            try {
+                                status.startResolutionForResult(TrackingActivity.this, REQUEST_LOCATION);
+                            } catch (IntentSender.SendIntentException e) {
+                            }
+                            break;
+                    }
+                }
+            });
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+
+        if (requestCode == 101) {
+            if (grantResults.length > 0
+                    && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                requestAutoMaticLoc();
+            }
+        }
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+
+        showMarker(location.getLatitude(), location.getLongitude());
+        if (!isFirstTime) {
+            mGoogleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(location.getLatitude(), location.getLongitude()), 12.0f));
+            isFirstTime = true;
+
+        }
+//        boolean contains = mGoogleMap.getProjection()
+//                .getVisibleRegion()
+//                .latLngBounds
+//                .contains(new LatLng(location.getLatitude(), location.getLongitude()));
+//
+//        if (!contains) {
+//            mGoogleMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(location.getLatitude(), location.getLongitude())));
+//        }
+    }
+
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(String provider) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(String provider) {
+
+    }
+
+    private void showMarker(double lat2, double lng2) {
+        LatLng latLng = new LatLng(lat2, lng2);
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss", Locale.getDefault());
+        String currentDateandTime = sdf.format(new Date());
+        if (userMarker == null) {
+
+            userMarker = mGoogleMap.addMarker(new MarkerOptions()
+                    .snippet("My Location")
+                    .position(latLng)
+                    .icon(BitmapDescriptorFactory.defaultMarker()));
+            userMarker.setTitle(currentDateandTime);
+
+        } else {
+            userMarker.setPosition(new LatLng(lat2, lng2));
+        }
+    }
+
+    private void showBusMarker(JSONObject jsonObject) throws JSONException {
+        Log.i("showBusMarker", "json" + jsonObject);
+        final Double lat2 = Double.parseDouble(jsonObject.getString("lat"));
+        final Double lng2 = Double.parseDouble(jsonObject.getString("lng"));
+        String speed = jsonObject.getString("speed");
+        String last_updated_time = jsonObject.getString("dt_tracker");
+        final String tittle = "Bus :" + Bus_number + "Speed : " + speed + "kmph";
+
+        final LatLng latLng = new LatLng(lat2, lng2);
+
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (busMarker == null) {
+
+                    busMarker = mGoogleMap.addMarker(new MarkerOptions()
+                            .snippet(bus_id)
+                            .position(latLng)
+                            .icon(bmp));
+                    busMarker.setTitle(tittle);
+                    mGoogleMap.setTrafficEnabled(true);
+
+                } else {
+                    busMarker.setPosition(new LatLng(lat2, lng2));
+                    busMarker.setTitle(tittle);
+                }
+            }
+        });
+    }
+
+    @Override
+    public void onResponseReceived(String error, String response, String tag) {
+      Log.d("error", "" + error);
+      Log.d("tag", tag);
+      Log.d("response", "" + response);
+
+//        progressDialog.dismiss();
+        if (error == null) {
+            if (tag.equalsIgnoreCase(ApplicationConstants.WEB_ACTION_GET_BUS_GPS)) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+
+                    if (jsonObject.has(gps_device_id)) {
+                        showBusMarker(jsonObject.getJSONObject(gps_device_id));
+                    } else {
+//                        Utility.getInstatnce().showAlertDialog(this, "We are in sky.Contact to admin", getResources().getString(R.string.type_error_warning));
+                    }
+
+
+//                    } else {
+
+//                        Utility.getInstatnce().showAlertDialog(this, jsonObject.getString("msg"), getResources().getString(R.string.type_error_warning));
+//                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            } else if (tag.equalsIgnoreCase(ApplicationConstants.WEB_ACTION_GET_BUS_STOP)) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    if ((jsonObject.getInt("status") == 1)) {
+                        JSONObject json = new JSONObject(response);
+                        JSONObject jsonObject1 = json.getJSONObject("data");
+                        Parser parser = new Parser();
+                        ArrayList<StopageModel> stopageList = parser.getStopageWithPsngList(jsonObject1);
+                        setStopageMarker(stopageList);
+                    } else {
+                        Utility.getInstatnce().showAlertDialog(this, jsonObject.getString("msg"), getResources().getString(R.string.type_error_warning));
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        } else {
+            Utility.getInstatnce().showAlertDialog(this, error, getResources().getString(R.string.type_error_warning));
+        }
+    }
+
+    private void setStopageMarker(ArrayList<StopageModel> stopageList) {
+        markers= new ArrayList<>();
+        for (StopageModel stopageModel:stopageList){
+            setMarker(stopageModel);
+        }
+        LatLngBounds.Builder builder = new LatLngBounds.Builder();
+        for (Marker marker : markers) {
+            builder.include(marker.getPosition());
+        }
+        LatLngBounds bounds = builder.build();
+        int padding = 0; // offset from edges of the map in pixels
+        CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
+        mGoogleMap.animateCamera(cu);
+
+    }
+    public void setMarker(StopageModel stopageModel){
+
+        Marker marker = mGoogleMap.addMarker(new MarkerOptions()
+                .snippet(stopageModel.getStopName())
+                .position(new LatLng(Double.parseDouble(stopageModel.getLatitude()), Double.parseDouble(stopageModel.getLongitude())))
+                .icon(BitmapDescriptorFactory.defaultMarker(new Random().nextInt(360))));
+        marker.setTitle(stopageModel.getStopTime());
+        marker.setTag(stopageModel);
+        LatLng latLng = new LatLng(Double.parseDouble(stopageModel.getLatitude()), Double.parseDouble(stopageModel.getLongitude()));
+        mGoogleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+        markers.add(marker);
+    }
+    private BitmapDescriptor bitmapDescriptorFromVector(Context context, @DrawableRes int vectorDrawableResourceId) {
+        Drawable background = ContextCompat.getDrawable(context, R.drawable.ic_bus);
+        background.setBounds(0, 0, background.getIntrinsicWidth(), background.getIntrinsicHeight());
+        Drawable vectorDrawable = ContextCompat.getDrawable(context, vectorDrawableResourceId);
+        vectorDrawable.setBounds(40, 20, vectorDrawable.getIntrinsicWidth() + 40, vectorDrawable.getIntrinsicHeight() + 20);
+        Bitmap bitmap = Bitmap.createBitmap(background.getIntrinsicWidth(), background.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        background.draw(canvas);
+        vectorDrawable.draw(canvas);
+        return BitmapDescriptorFactory.fromBitmap(bitmap);
+    }
+
+//    @Override
+//    public void onBackPressed() {
+//        super.onBackPressed();
+//        finish();
+//    }
+
+
+
+    private void bus_location() {
+        // Tag used to cancel the request
+        final String tag_string_req = "req_login";
+
+        //  showProgressDialog();
+        final String url = ApplicationConstants.baseApi+"bus-location";
+        try{
+            StringRequest strReq = new StringRequest(Request.Method.POST,
+                    url, new Response.Listener<String>(){
+
+
+                @Override
+                public void onResponse(String response) {
+                    Log.d("TAG", "bus_location url: " + url);
+                    Log.d("TAG", "bus_location response: " + response);
+                    //  progressDialog.dismiss();
+
+                    Gson gson = new Gson();
+                    //   list.clear();
+                    try {
+
+                        JsonObject jobj = gson.fromJson(response, JsonObject.class);
+                        String status = jobj.get("status").getAsString().replaceAll("\"", "");
+                        String msg = jobj.get("msg").getAsString().replaceAll("\"", "");
+
+
+
+                        if(status.equals("200")) {
+
+
+
+                                String id = images1.get("id").toString().replaceAll("\"", "");
+                                String name = images1.get("name").toString().replaceAll("\"", "");
+                                String latitude = images1.get("latitude").toString().replaceAll("\"", "");
+                                String longitude = images1.get("longitude").toString().replaceAll("\"", "");
+                                String StopTime = images1.get("StopTime").toString().replaceAll("\"", "");
+
+                                Log.d("TAG", "onResponse String: " + route_name);
+
+                                HashMap<String, String> hashMap = new HashMap<>();
+                                hashMap.put("id", id);
+                                hashMap.put("name", name);
+                                hashMap.put("latitude", latitude);
+                                hashMap.put("longitude", longitude);
+                                hashMap.put("StopTime", StopTime);
+
+
+                                stop_list.add(hashMap);
+                            }
+
+                            //     Log.d(TAG, "onResponse 0pos: "+routes_list.size());
+
+
+
+                        }
+
+
+                    }catch (Exception e){
+                        e.printStackTrace();
+
+                    }
+                }
+            }, new Response.ErrorListener() {
+
+                @Override
+
+                public void onErrorResponse(VolleyError error) {
+                    Log.e("TAG", "bus_location Error: " + error.getMessage());
+                    Toast.makeText(getApplicationContext(),
+                            "Connection Error", Toast.LENGTH_LONG).show();
+                    //  pd.dismiss();
+                }
+            }) {
+
+                @Override
+                protected Map<String, String> getParams() {
+                    // Posting parameters to login url
+                    Map<String, String> params = new HashMap<>();
+
+
+                    params.put("bus_id", bus_id);
+
+
+
+                    return params;
+                }
+
+            };
+
+            // Adding request to request queue
+     /*   GlobalClass.getInstance().addToRequestQueue(strReq, tag_string_req);
+        strReq.setRetryPolicy(new DefaultRetryPolicy(20 * 1000, 10, 1.0f));*/
+            strReq.setShouldCache(false);// todo added this to remove cache from request
+            int TIME_OUT =5000;
+            strReq.setRetryPolicy(new DefaultRetryPolicy(TIME_OUT, 0, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+            addToRequestQueue(TrackingActivity.this, strReq, tag_string_req);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    private <T> void addToRequestQueue(Context mContext, Request<T> request, String tag) {
+        // set the default tag if tag is empty
+        request.setTag(TextUtils.isEmpty(tag));
+        getRequestQueue(mContext).add(request);
+    }
+    private RequestQueue getRequestQueue(Context mContext) {
+        if (mRequestQueue == null) {
+            mRequestQueue = Volley.newRequestQueue(mContext);
+        }
+
+        return mRequestQueue;
+    }
+
+
+
+}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
