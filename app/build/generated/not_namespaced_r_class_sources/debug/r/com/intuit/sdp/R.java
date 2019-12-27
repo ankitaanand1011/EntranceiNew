@@ -676,10 +676,10 @@ public final class R {
     public static final class id {
         private id() {}
 
-        public static final int give_us_a_review_landmine_button = 0x7f080084;
-        public static final int give_us_a_review_landmine_main_layout = 0x7f080085;
-        public static final int give_us_a_review_landmine_text_1 = 0x7f080086;
-        public static final int give_us_a_review_landmine_text_2 = 0x7f080087;
+        public static final int give_us_a_review_landmine_button = 0x7f080085;
+        public static final int give_us_a_review_landmine_main_layout = 0x7f080086;
+        public static final int give_us_a_review_landmine_text_1 = 0x7f080087;
+        public static final int give_us_a_review_landmine_text_2 = 0x7f080088;
     }
     public static final class layout {
         private layout() {}

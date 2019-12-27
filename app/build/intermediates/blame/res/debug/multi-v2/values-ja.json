@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\Projects\\EntranceiNew\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-ja\\values-ja.xml",
+            "outputFile": "E:\\Android Studio Projects\\EntranceiNew1\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-ja\\values-ja.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Ankita\\.gradle\\caches\\transforms-2\\files-2.1\\6119d746697059b7e1b74aab4d181f56\\appcompat-1.1.0\\res\\values-ja\\values-ja.xml",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Ankita\\.gradle\\caches\\transforms-2\\files-2.1\\8b82dc8a9e5a06d9de2a9adc26756e08\\jetified-navigation-ui-2.0.0\\res\\values-ja\\values-ja.xml",
+                    "source": "C:\\Users\\Ankita\\.gradle\\caches\\transforms-2\\files-2.1\\169b0816484c104a1e0e5fa4e056a052\\jetified-navigation-ui-2.0.0\\res\\values-ja\\values-ja.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",

@@ -1,25 +1,8 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\Projects\\EntranceiNew\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-de\\values-de.xml",
+            "outputFile": "E:\\Android Studio Projects\\EntranceiNew1\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-de\\values-de.xml",
             "map": [
-                {
-                    "source": "C:\\Users\\Ankita\\.gradle\\caches\\transforms-2\\files-2.1\\8b82dc8a9e5a06d9de2a9adc26756e08\\jetified-navigation-ui-2.0.0\\res\\values-de\\values-de.xml",
-                    "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,159",
-                        "endColumns": "103,118",
-                        "endOffsets": "154,273"
-                    },
-                    "to": {
-                        "startLines": "29,30",
-                        "startColumns": "4,4",
-                        "startOffsets": "2832,2936",
-                        "endColumns": "103,118",
-                        "endOffsets": "2931,3050"
-                    }
-                },
                 {
                     "source": "C:\\Users\\Ankita\\.gradle\\caches\\transforms-2\\files-2.1\\6119d746697059b7e1b74aab4d181f56\\appcompat-1.1.0\\res\\values-de\\values-de.xml",
                     "from": {
@@ -52,6 +35,23 @@
                         "startOffsets": "3136",
                         "endColumns": "100",
                         "endOffsets": "3232"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Ankita\\.gradle\\caches\\transforms-2\\files-2.1\\169b0816484c104a1e0e5fa4e056a052\\jetified-navigation-ui-2.0.0\\res\\values-de\\values-de.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,159",
+                        "endColumns": "103,118",
+                        "endOffsets": "154,273"
+                    },
+                    "to": {
+                        "startLines": "29,30",
+                        "startColumns": "4,4",
+                        "startOffsets": "2832,2936",
+                        "endColumns": "103,118",
+                        "endOffsets": "2931,3050"
                     }
                 }
             ]

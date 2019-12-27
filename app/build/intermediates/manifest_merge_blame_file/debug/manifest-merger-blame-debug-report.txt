@@ -6,58 +6,94 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="19"
-8-->D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml
+8-->E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml
 9        android:targetSdkVersion="29" />
-9-->D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml
+9-->E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml
 10
 11    <application
-11-->D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml:5:5-22:19
-12        android:allowBackup="true"
-12-->D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml:6:9-35
-13        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-13-->[androidx.core:core:1.1.0] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\e9dab9c67c1ee3668e0bbf86c6d8cbd8\core-1.1.0\AndroidManifest.xml:24:18-86
-14        android:debuggable="true"
-15        android:icon="@mipmap/ic_launcher"
-15-->D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml:7:9-43
-16        android:label="@string/app_name"
-16-->D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml:8:9-41
-17        android:roundIcon="@mipmap/ic_launcher_round"
-17-->D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml:9:9-54
-18        android:supportsRtl="true"
-18-->D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml:10:9-35
-19        android:testOnly="true"
+11-->E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:6:5-43:19
+12        android:name="com.exam.entranceinew.GlobalClass"
+12-->E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:12:9-36
+13        android:allowBackup="true"
+13-->E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:7:9-35
+14        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+14-->[androidx.core:core:1.1.0] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\e9dab9c67c1ee3668e0bbf86c6d8cbd8\core-1.1.0\AndroidManifest.xml:24:18-86
+15        android:debuggable="true"
+16        android:icon="@mipmap/ic_launcher"
+16-->E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:8:9-43
+17        android:label="@string/app_name"
+17-->E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:9:9-41
+18        android:roundIcon="@mipmap/ic_launcher_round"
+18-->E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:10:9-54
+19        android:supportsRtl="true"
+19-->E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:11:9-35
 20        android:theme="@style/AppTheme" >
-20-->D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml:11:9-40
+20-->E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:13:9-40
 21        <activity
-21-->D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml:12:9-21:20
+21-->E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:15:9-24:20
 22            android:name="com.exam.entranceinew.MainActivity"
-22-->D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml:13:13-41
+22-->E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:16:13-41
 23            android:label="@string/app_name"
-23-->D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml:14:13-45
+23-->E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:17:13-45
 24            android:theme="@style/AppTheme.NoActionBar" >
-24-->D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml:15:13-56
+24-->E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:18:13-56
 25            <intent-filter>
-25-->D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml:16:13-20:29
+25-->E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:19:13-23:29
 26                <action android:name="android.intent.action.MAIN" />
-26-->D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml:17:17-69
-26-->D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml:17:25-66
+26-->E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:20:17-69
+26-->E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:20:25-66
 27
-28                <category android:name="android.intent.category.LAUNCHER" />
-28-->D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml:19:17-77
-28-->D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml:19:27-74
+28                <category android:name="android.intent.category.DEFAULT" />
+28-->E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:22:17-76
+28-->E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:22:27-73
 29            </intent-filter>
 30        </activity>
-31
-32        <provider
-32-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\6fbf654d3db04d7d9e48eb73ccf59f45\lifecycle-process-2.0.0\AndroidManifest.xml:23:9-27:43
-33            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
-33-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\6fbf654d3db04d7d9e48eb73ccf59f45\lifecycle-process-2.0.0\AndroidManifest.xml:24:13-79
-34            android:authorities="com.exam.entranceinew.lifecycle-process"
-34-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\6fbf654d3db04d7d9e48eb73ccf59f45\lifecycle-process-2.0.0\AndroidManifest.xml:25:13-69
-35            android:exported="false"
-35-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\6fbf654d3db04d7d9e48eb73ccf59f45\lifecycle-process-2.0.0\AndroidManifest.xml:26:13-37
-36            android:multiprocess="true" />
-36-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\6fbf654d3db04d7d9e48eb73ccf59f45\lifecycle-process-2.0.0\AndroidManifest.xml:27:13-40
-37    </application>
-38
-39</manifest>
+31        <activity
+31-->E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:26:9-34:20
+32            android:name="com.exam.entranceinew.ui.SplashScreen"
+32-->E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:26:19-50
+33            android:theme="@style/AppTheme.NoActionBar" >
+33-->E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:27:13-56
+34            <intent-filter>
+34-->E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:29:13-33:29
+35                <action android:name="android.intent.action.MAIN" />
+35-->E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:20:17-69
+35-->E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:20:25-66
+36
+37                <category android:name="android.intent.category.LAUNCHER" />
+37-->E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:32:17-77
+37-->E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:32:27-74
+38            </intent-filter>
+39        </activity>
+40        <activity
+40-->E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:36:9-37:58
+41            android:name="com.exam.entranceinew.ui.LoginScreen"
+41-->E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:36:19-49
+42            android:theme="@style/AppTheme.NoActionBar" />
+42-->E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:37:13-56
+43        <activity
+43-->E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:38:9-39:58
+44            android:name="com.exam.entranceinew.ui.Signup"
+44-->E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:38:19-44
+45            android:theme="@style/AppTheme.NoActionBar" />
+45-->E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:39:13-56
+46        <activity
+46-->E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:40:9-41:58
+47            android:name="com.exam.entranceinew.ui.SignUpScreen"
+47-->E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:40:19-50
+48            android:theme="@style/AppTheme.NoActionBar" />
+48-->E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:41:13-56
+49
+50        <provider
+50-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\6fbf654d3db04d7d9e48eb73ccf59f45\lifecycle-process-2.0.0\AndroidManifest.xml:23:9-27:43
+51            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+51-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\6fbf654d3db04d7d9e48eb73ccf59f45\lifecycle-process-2.0.0\AndroidManifest.xml:24:13-79
+52            android:authorities="com.exam.entranceinew.lifecycle-process"
+52-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\6fbf654d3db04d7d9e48eb73ccf59f45\lifecycle-process-2.0.0\AndroidManifest.xml:25:13-69
+53            android:exported="false"
+53-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\6fbf654d3db04d7d9e48eb73ccf59f45\lifecycle-process-2.0.0\AndroidManifest.xml:26:13-37
+54            android:multiprocess="true" />
+54-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\6fbf654d3db04d7d9e48eb73ccf59f45\lifecycle-process-2.0.0\AndroidManifest.xml:27:13-40
+55    </application>
+56
+57</manifest>

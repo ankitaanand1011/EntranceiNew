@@ -83,18 +83,18 @@ public final class R {
         public static final int action_image = 0x7f080035;
         public static final int action_text = 0x7f08003c;
         public static final int actions = 0x7f08003d;
-        public static final int async = 0x7f080043;
-        public static final int blocking = 0x7f080047;
-        public static final int chronometer = 0x7f080057;
-        public static final int forever = 0x7f080081;
-        public static final int ghost_view = 0x7f080082;
-        public static final int ghost_view_holder = 0x7f080083;
-        public static final int icon = 0x7f08008e;
-        public static final int icon_group = 0x7f08008f;
-        public static final int info = 0x7f080093;
-        public static final int italic = 0x7f080095;
-        public static final int line1 = 0x7f08009a;
-        public static final int line3 = 0x7f08009b;
+        public static final int async = 0x7f080044;
+        public static final int blocking = 0x7f080048;
+        public static final int chronometer = 0x7f080058;
+        public static final int forever = 0x7f080082;
+        public static final int ghost_view = 0x7f080083;
+        public static final int ghost_view_holder = 0x7f080084;
+        public static final int icon = 0x7f08008f;
+        public static final int icon_group = 0x7f080090;
+        public static final int info = 0x7f080094;
+        public static final int italic = 0x7f080096;
+        public static final int line1 = 0x7f08009b;
+        public static final int line3 = 0x7f08009c;
         public static final int normal = 0x7f0800d1;
         public static final int notification_background = 0x7f0800d2;
         public static final int notification_main_column = 0x7f0800d3;
@@ -109,13 +109,13 @@ public final class R {
         public static final int tag_unhandled_key_listeners = 0x7f080124;
         public static final int text = 0x7f080127;
         public static final int text2 = 0x7f080128;
-        public static final int time = 0x7f08013a;
-        public static final int title = 0x7f08013b;
-        public static final int transition_current_scene = 0x7f080142;
-        public static final int transition_layout_save = 0x7f080143;
-        public static final int transition_position = 0x7f080144;
-        public static final int transition_scene_layoutid_cache = 0x7f080145;
-        public static final int transition_transform = 0x7f080146;
+        public static final int time = 0x7f080139;
+        public static final int title = 0x7f08013a;
+        public static final int transition_current_scene = 0x7f080141;
+        public static final int transition_layout_save = 0x7f080142;
+        public static final int transition_position = 0x7f080143;
+        public static final int transition_scene_layoutid_cache = 0x7f080144;
+        public static final int transition_transform = 0x7f080145;
     }
     public static final class integer {
         private integer() {}

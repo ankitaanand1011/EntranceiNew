@@ -1,10 +1,10 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml:2:1-24:12
-INJECTED from D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml:2:1-24:12
-INJECTED from D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml:2:1-24:12
-INJECTED from D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml:2:1-24:12
-MERGED from [androidx.navigation:navigation-ui:2.0.0] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\8b82dc8a9e5a06d9de2a9adc26756e08\jetified-navigation-ui-2.0.0\AndroidManifest.xml:17:1-22:12
+ADDED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:2:1-45:12
+INJECTED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:2:1-45:12
+INJECTED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:2:1-45:12
+INJECTED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:2:1-45:12
+MERGED from [androidx.navigation:navigation-ui:2.0.0] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\169b0816484c104a1e0e5fa4e056a052\jetified-navigation-ui-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.tbuonomo:morph-bottom-navigation:1.0.1] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\7015ea39f2ef4dc9ff718f83e315c6fc\morph-bottom-navigation-1.0.1\AndroidManifest.xml:2:1-11:12
 MERGED from [com.tbuonomo:magicshapepath:1.0.0-alpha3] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\122dced4c732faf373fb5ddb640c2022\magicshapepath-1.0.0-alpha3\AndroidManifest.xml:2:1-11:12
 MERGED from [com.google.android.material:material:1.2.0-alpha02] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\89960a8f9b5e73731627972c56f94153\material-1.2.0-alpha02\AndroidManifest.xml:17:1-24:12
@@ -14,7 +14,7 @@ MERGED from [androidx.navigation:navigation-fragment:2.0.0] C:\Users\Ankita\.gra
 MERGED from [androidx.lifecycle:lifecycle-extensions:2.0.0] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\e71d59022806682985be2942fcbccbfb\lifecycle-extensions-2.0.0\AndroidManifest.xml:17:1-25:12
 MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\4fe44ae24daa7cfa2dd483a5d3b65a2f\cardview-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.intuit.sdp:sdp-android:1.0.6] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\1804ceb3130bacf4d7381e6943c41f67\sdp-android-1.0.6\AndroidManifest.xml:2:1-11:12
-MERGED from [de.hdodenhof:circleimageview:2.2.0] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\056bdc6276d0c6810e6073d49d27c878\jetified-circleimageview-2.2.0\AndroidManifest.xml:2:1-11:12
+MERGED from [de.hdodenhof:circleimageview:2.2.0] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\ad120d8f2f6d19d6c9c8642f214bcb9a\jetified-circleimageview-2.2.0\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.viewpager2:viewpager2:1.0.0-rc01] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\186cf7410ba9292941f5b58b427820ae\viewpager2-1.0.0-rc01\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\0362ff4d8672321347a402c32368f192\fragment-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.appcompat:appcompat-resources:1.1.0] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\ddf6a25e6e3e5e2af441269b48288beb\appcompat-resources-1.1.0\AndroidManifest.xml:17:1-24:12
@@ -47,33 +47,35 @@ MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\Ankita\.gradle\c
 MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\f582580d3eb247a74d915a27810a4674\documentfile-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\c75155371656c04dff3a027cdeb13e8a\localbroadcastmanager-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\53b4a4cf87c0ff501a8c414cec884555\print-1.0.0\AndroidManifest.xml:17:1-22:12
-INJECTED from D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml:2:1-24:12
-INJECTED from D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml:2:1-24:12
-INJECTED from D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml:2:1-24:12
+INJECTED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:2:1-45:12
+INJECTED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:2:1-45:12
+INJECTED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:2:1-45:12
 	package
-		ADDED from D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml:3:5-36
-		INJECTED from D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml
-		INJECTED from D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml
+		ADDED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:4:5-36
+		INJECTED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml
+		INJECTED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml
 	android:versionName
-		INJECTED from D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml
-		ADDED from D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml:2:1-24:12
-		INJECTED from D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml
+		INJECTED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml
+		ADDED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:2:1-45:12
+		INJECTED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml
+	xmlns:tools
+		ADDED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:3:5-51
 	android:versionCode
-		INJECTED from D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml
-		ADDED from D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml:2:1-24:12
-		INJECTED from D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml
+		INJECTED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml
+		ADDED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:2:1-45:12
+		INJECTED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml:2:11-69
+		ADDED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:2:11-69
 application
-ADDED from D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml:5:5-22:19
+ADDED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:6:5-43:19
 MERGED from [com.google.android.material:material:1.2.0-alpha02] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\89960a8f9b5e73731627972c56f94153\material-1.2.0-alpha02\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.2.0-alpha02] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\89960a8f9b5e73731627972c56f94153\material-1.2.0-alpha02\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\3ec6fa8458ddbe732478393a9f9e6c77\constraintlayout-1.1.3\AndroidManifest.xml:9:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\3ec6fa8458ddbe732478393a9f9e6c77\constraintlayout-1.1.3\AndroidManifest.xml:9:5-20
 MERGED from [androidx.lifecycle:lifecycle-extensions:2.0.0] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\e71d59022806682985be2942fcbccbfb\lifecycle-extensions-2.0.0\AndroidManifest.xml:22:5-23:19
 MERGED from [androidx.lifecycle:lifecycle-extensions:2.0.0] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\e71d59022806682985be2942fcbccbfb\lifecycle-extensions-2.0.0\AndroidManifest.xml:22:5-23:19
-MERGED from [de.hdodenhof:circleimageview:2.2.0] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\056bdc6276d0c6810e6073d49d27c878\jetified-circleimageview-2.2.0\AndroidManifest.xml:9:5-20
-MERGED from [de.hdodenhof:circleimageview:2.2.0] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\056bdc6276d0c6810e6073d49d27c878\jetified-circleimageview-2.2.0\AndroidManifest.xml:9:5-20
+MERGED from [de.hdodenhof:circleimageview:2.2.0] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\ad120d8f2f6d19d6c9c8642f214bcb9a\jetified-circleimageview-2.2.0\AndroidManifest.xml:9:5-20
+MERGED from [de.hdodenhof:circleimageview:2.2.0] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\ad120d8f2f6d19d6c9c8642f214bcb9a\jetified-circleimageview-2.2.0\AndroidManifest.xml:9:5-20
 MERGED from [androidx.core:core:1.1.0] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\e9dab9c67c1ee3668e0bbf86c6d8cbd8\core-1.1.0\AndroidManifest.xml:24:5-89
 MERGED from [androidx.core:core:1.1.0] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\e9dab9c67c1ee3668e0bbf86c6d8cbd8\core-1.1.0\AndroidManifest.xml:24:5-89
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\78be57497ca2a8dd090798c529f3e53d\versionedparcelable-1.1.0\AndroidManifest.xml:24:5-25:19
@@ -83,41 +85,75 @@ MERGED from [androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\Ankita\.gradle
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.1.0] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\e9dab9c67c1ee3668e0bbf86c6d8cbd8\core-1.1.0\AndroidManifest.xml:24:18-86
 	android:supportsRtl
-		ADDED from D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml:10:9-35
+		ADDED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:11:9-35
 	android:label
-		ADDED from D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml:8:9-41
+		ADDED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:9:9-41
+	tools:ignore
+		ADDED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:14:9-48
 	android:roundIcon
-		ADDED from D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml:9:9-54
+		ADDED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:10:9-54
 	android:icon
-		ADDED from D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml:7:9-43
+		ADDED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:8:9-43
 	android:allowBackup
-		ADDED from D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml:6:9-35
+		ADDED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:7:9-35
 	android:theme
-		ADDED from D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml:11:9-40
+		ADDED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:13:9-40
+	android:name
+		ADDED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:12:9-36
 activity#com.exam.entranceinew.MainActivity
-ADDED from D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml:12:9-21:20
+ADDED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:15:9-24:20
 	android:label
-		ADDED from D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml:14:13-45
+		ADDED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:17:13-45
 	android:theme
-		ADDED from D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml:15:13-56
+		ADDED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:18:13-56
 	android:name
-		ADDED from D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml:13:13-41
-intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml:16:13-20:29
+		ADDED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:16:13-41
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.DEFAULT
+ADDED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:19:13-23:29
 action#android.intent.action.MAIN
-ADDED from D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml:17:17-69
+ADDED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:20:17-69
 	android:name
-		ADDED from D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml:17:25-66
+		ADDED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:20:25-66
+category#android.intent.category.DEFAULT
+ADDED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:22:17-76
+	android:name
+		ADDED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:22:27-73
+activity#com.exam.entranceinew.ui.SplashScreen
+ADDED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:26:9-34:20
+	android:theme
+		ADDED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:27:13-56
+	android:name
+		ADDED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:26:19-50
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:29:13-33:29
 category#android.intent.category.LAUNCHER
-ADDED from D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml:19:17-77
+ADDED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:32:17-77
 	android:name
-		ADDED from D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml:19:27-74
+		ADDED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:32:27-74
+activity#com.exam.entranceinew.ui.LoginScreen
+ADDED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:36:9-37:58
+	android:theme
+		ADDED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:37:13-56
+	android:name
+		ADDED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:36:19-49
+activity#com.exam.entranceinew.ui.Signup
+ADDED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:38:9-39:58
+	android:theme
+		ADDED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:39:13-56
+	android:name
+		ADDED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:38:19-44
+activity#com.exam.entranceinew.ui.SignUpScreen
+ADDED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:40:9-41:58
+	android:theme
+		ADDED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:41:13-56
+	android:name
+		ADDED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml:40:19-50
 uses-sdk
-INJECTED from D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml
-INJECTED from D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml
-MERGED from [androidx.navigation:navigation-ui:2.0.0] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\8b82dc8a9e5a06d9de2a9adc26756e08\jetified-navigation-ui-2.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.navigation:navigation-ui:2.0.0] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\8b82dc8a9e5a06d9de2a9adc26756e08\jetified-navigation-ui-2.0.0\AndroidManifest.xml:20:5-44
+INJECTED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml
+INJECTED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml
+MERGED from [androidx.navigation:navigation-ui:2.0.0] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\169b0816484c104a1e0e5fa4e056a052\jetified-navigation-ui-2.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-ui:2.0.0] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\169b0816484c104a1e0e5fa4e056a052\jetified-navigation-ui-2.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.tbuonomo:morph-bottom-navigation:1.0.1] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\7015ea39f2ef4dc9ff718f83e315c6fc\morph-bottom-navigation-1.0.1\AndroidManifest.xml:7:5-9:41
 MERGED from [com.tbuonomo:morph-bottom-navigation:1.0.1] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\7015ea39f2ef4dc9ff718f83e315c6fc\morph-bottom-navigation-1.0.1\AndroidManifest.xml:7:5-9:41
 MERGED from [com.tbuonomo:magicshapepath:1.0.0-alpha3] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\122dced4c732faf373fb5ddb640c2022\magicshapepath-1.0.0-alpha3\AndroidManifest.xml:7:5-9:41
@@ -136,8 +172,8 @@ MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\Ankita\.gradle\caches\tr
 MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\4fe44ae24daa7cfa2dd483a5d3b65a2f\cardview-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.intuit.sdp:sdp-android:1.0.6] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\1804ceb3130bacf4d7381e6943c41f67\sdp-android-1.0.6\AndroidManifest.xml:7:5-9:41
 MERGED from [com.intuit.sdp:sdp-android:1.0.6] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\1804ceb3130bacf4d7381e6943c41f67\sdp-android-1.0.6\AndroidManifest.xml:7:5-9:41
-MERGED from [de.hdodenhof:circleimageview:2.2.0] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\056bdc6276d0c6810e6073d49d27c878\jetified-circleimageview-2.2.0\AndroidManifest.xml:5:5-7:41
-MERGED from [de.hdodenhof:circleimageview:2.2.0] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\056bdc6276d0c6810e6073d49d27c878\jetified-circleimageview-2.2.0\AndroidManifest.xml:5:5-7:41
+MERGED from [de.hdodenhof:circleimageview:2.2.0] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\ad120d8f2f6d19d6c9c8642f214bcb9a\jetified-circleimageview-2.2.0\AndroidManifest.xml:5:5-7:41
+MERGED from [de.hdodenhof:circleimageview:2.2.0] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\ad120d8f2f6d19d6c9c8642f214bcb9a\jetified-circleimageview-2.2.0\AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.viewpager2:viewpager2:1.0.0-rc01] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\186cf7410ba9292941f5b58b427820ae\viewpager2-1.0.0-rc01\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.viewpager2:viewpager2:1.0.0-rc01] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\186cf7410ba9292941f5b58b427820ae\viewpager2-1.0.0-rc01\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\0362ff4d8672321347a402c32368f192\fragment-1.1.0\AndroidManifest.xml:20:5-22:41
@@ -202,16 +238,16 @@ MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\User
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\c75155371656c04dff3a027cdeb13e8a\localbroadcastmanager-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.print:print:1.0.0] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\53b4a4cf87c0ff501a8c414cec884555\print-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.print:print:1.0.0] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\53b4a4cf87c0ff501a8c414cec884555\print-1.0.0\AndroidManifest.xml:20:5-44
-INJECTED from D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml
-INJECTED from D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml
+INJECTED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml
+INJECTED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml
-		ADDED from D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml
-		INJECTED from D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml
+		INJECTED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml
+		ADDED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml
+		INJECTED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml
-		ADDED from D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml
-		INJECTED from D:\Projects\EntranceiNew\app\src\main\AndroidManifest.xml
+		INJECTED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml
+		ADDED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml
+		INJECTED from E:\Android Studio Projects\EntranceiNew1\app\src\main\AndroidManifest.xml
 provider#androidx.lifecycle.ProcessLifecycleOwnerInitializer
 ADDED from [androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\Ankita\.gradle\caches\transforms-2\files-2.1\6fbf654d3db04d7d9e48eb73ccf59f45\lifecycle-process-2.0.0\AndroidManifest.xml:23:9-27:43
 	android:authorities
